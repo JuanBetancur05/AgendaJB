@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bienvenido</title>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../assets/db/database.js"></script>
+  
+    
+  <!-- FullCalendar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../assets/css/fullcalendar.min.css">
+
+  <!-- Estilos externos -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/css/home.css" />
+       <link rel="stylesheet" href="../assets/css/estilos.css" media="screen">
+       
+        <script class="u-script" type="text/javascript" src="../assets/js/jquery.js" defer=""></script>
+        <script class="u-script" type="text/javascript" src="../assets/js/estilos.js" defer=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+  <!-- Estilos internos -->
+  <style>
+    .u-menu {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  max-width: fit-content !important;
+  min-height: 80px !important; /* Ajustá según lo que necesites */
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding-top: 30px;
+  background-color: #f7f8fa;
+}
+
+h2 {
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #00ffea;
+  margin-bottom: 20px;
+}
+
+/* Botones del calendario */
+.fc .fc-button-group .fc-button.fc-state-active {
+  color: #000;
+}
+
+.fc .fc-button-group .fc-button {
+  background-color: #000;
+  margin: 0;
+}
+
+.fc button {
+  height: auto;
+  background-image: none;
+  text-shadow: none;
+  font-weight: normal;
+  background-color: #000;
+  border-color: #000000;
+  text-transform: capitalize;
+  color: #fff;
+}
+
+/* Día actual */
+.fc-unthemed td.fc-today {
+  background: #000000;
+}
+
+/* Estilos de eventos */
+.fc-event {
+  font-size: 12px;
+  padding: 2px 4px;
+  line-height: 1.2;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+/* Estilo mejorado de eventos en el grid */
+.fc-daygrid-event {
+  display: block;
+  white-space: normal;
+  overflow: visible;
+  font-size: 13px;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* Asegura visibilidad de todos los eventos */
+.fc-daygrid-day-frame {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* Botón ❌ centrado en el evento */
+.fc-event-close {
+  position: absolute;
+  top: 50%;
+  left: 95%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 18px;
+  font-size: 14px;
+  line-height: 16px;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+  visibility: hidden;
+}
+
+/* Mostrar ❌ al hacer hover */
+.fc-event:hover .fc-event-close {
+  visibility: visible;
+}
+
+/* Drag visual */
+.fc-event.fc-event-draggable {
+  position: relative;
+}
+
+/* Calendario responsive */
+#calendar {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+
+.fc-header-toolbar {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+}
+.fc-button {
+  font-size: 13px;
+  padding: 6px 8px;
+}
+
+@media (max-width: 600px) {
+  .fc-daygrid-event {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+  .fc-event {
+    padding-right: 20px;
+  }
+  .fc-event-close {
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    line-height: 14px;
+  }
+}
+.container {
+  width: 100%;
+  padding: 0 12px;
+}
+
+  </style>
+</head>
+<body>
+     <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
+          <div class="menu-collapse">
+            <a class="u-button-style u-hamburger-link u-nav-link" href="#" tabindex="-1" aria-label="Open menu" aria-controls="0dd2">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-nav-container">
+            <ul role="menubar" class="u-nav u-unstyled u-nav-1"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html" style="padding: 10px 20px;">Inicio</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./Tareas.html" style="padding: 10px 20px;">Tareas</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./login.html" style="padding: 10px 20px;">Ingresar</a>
+</li></ul>
+          </div>
+          <div class="u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html">Inicio</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Tareas.html">Tareas</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Ingresar.html">Ingresar</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav> 
+
+  <div class="d-flex">
+    <div class="main-content flex-grow-1">
+      <div class="container mt-5">
+        <div id="calendar" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+<!-- Modal para eventos -->
+<div id="modal-evento" class="modal fade show" tabindex="-1" role="dialog" style="display:none; background-color: rgba(0,0,0,0.6); z-index: 9999;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-titulo">Nuevo registro</h5>
+        <button type="button" class="close" onclick="cerrarModal()" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="modal-nombre">Título</label>
+          <input type="text" id="modal-nombre" class="form-control" placeholder="Título del evento" />
+        </div>
+
+        <div class="form-group">
+          <label for="modal-descripcion">Descripción</label>
+          <textarea id="modal-descripcion" class="form-control" placeholder="Descripción del evento"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="modal-color">Color</label>
+          <input type="color" id="modal-color" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="modal-inicio">Fecha y hora inicio</label>
+          <input type="datetime-local" id="modal-inicio" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="modal-fin">Fecha y hora fin</label>
+          <input type="datetime-local" id="modal-fin" class="form-control" />
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button onclick="cerrarModal()" class="btn btn-secondary">Cancelar</button>
+          <button id="btn-eliminar" class="btn btn-danger">Eliminar</button>
+
+        <button onclick="guardarEvento()" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  let currentUser = null;
+  let calendar;
+  let eventoSeleccionado = null;
+
+  function abrirModal(modo, inicio, fin, evento = null) {
+    document.getElementById('modal-evento').style.display = 'block';
+    document.getElementById('modal-titulo').textContent = modo === 'crear' ? 'Nuevo Evento' : 'Editar Evento';
+    document.getElementById('modal-nombre').value = evento?.title || '';
+    document.getElementById('modal-descripcion').value = evento?.extendedProps?.descripcion || '';
+    document.getElementById('modal-color').value = evento?.backgroundColor || '#23adff';
+
+    document.getElementById('modal-inicio').value = evento?.start
+      ? new Date(evento.start).toISOString().slice(0, 16)
+      : new Date(inicio).toISOString().slice(0, 16);
+
+    document.getElementById('modal-fin').value = evento?.end
+      ? new Date(evento.end).toISOString().slice(0, 16)
+      : new Date(fin).toISOString().slice(0, 16);
+
+    // Mostrar botón eliminar sólo al editar
+    document.getElementById('btn-eliminar').style.display = evento ? 'inline-block' : 'none';
+
+    eventoSeleccionado = evento;
+  }
+
+  function cerrarModal() {
+    document.getElementById('modal-evento').style.display = 'none';
+    eventoSeleccionado = null;
+  }
+
+  async function guardarEvento() {
+    const nombre = document.getElementById('modal-nombre').value;
+    const descripcion = document.getElementById('modal-descripcion').value;
+    const color = document.getElementById('modal-color').value;
+    const inicio = document.getElementById('modal-inicio').value;
+    const fin = document.getElementById('modal-fin').value;
+
+    if (!nombre.trim()) {
+      alert('El nombre es obligatorio');
+      return;
+    }
+
+    const fechaInicio = new Date(inicio);
+    const fechaFin = new Date(fin);
+    const ahora = new Date();
+
+    if (fechaInicio < ahora) {
+      alert('La fecha de inicio no puede ser anterior a hoy.');
+      return;
+    }
+
+    if (fechaFin < fechaInicio) {
+      alert('La fecha de finalización no puede ser anterior a la fecha de inicio.');
+      return;
+    }
+
+    const datosEvento = {
+      nombre,
+      descripcion,
+      fecha_hora_inicio: fechaInicio.toISOString(),
+      fecha_hora_final: new Date(fechaFin.setHours(23, 59, 0)).toISOString(),
+      color,
+      user_id: currentUser.id
+    };
+
+    if (eventoSeleccionado) {
+      await supabase
+        .from('eventos')
+        .update(datosEvento)
+        .eq('id', eventoSeleccionado.id);
+    } else {
+      await supabase
+        .from('eventos')
+        .insert([datosEvento]);
+    }
+
+    cerrarModal();
+    calendar.refetchEvents();
+  }
+
+  async function eliminarEvento(id, nombre) {
+    Swal.fire({
+      title: `¿Eliminar ${nombre}?`,
+      text: 'Esta acción no se puede deshacer.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+      if (!result.isConfirmed) return;
+      await supabase.from('eventos').delete().eq('id', id);
+      Swal.fire('Eliminado', 'El registro ha sido borrado.', 'success');
+      calendar.refetchEvents();
+    });
+  }
+
+  async function mostrarCalendario() {
+    const calendarEl = document.getElementById('calendar');
+    calendarEl.style.display = 'block';
+
+    calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      locale: 'es',
+      selectable: true,
+      editable: true,
+      dayMaxEvents: 3,
+      eventDisplay: 'block',
+      displayEventTime: false,
+      height: 'auto',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+
+      select(info) {
+        abrirModal('crear', info.startStr, info.endStr);
+      },
+
+      eventClick({ event }) {
+        abrirModal('editar', event.startStr, event.endStr, event);
+        document.getElementById('btn-eliminar').onclick = () => {
+          eliminarEvento(event.id, event.title);
+        };
+      },
+
+      eventDrop: async function(info) {
+        const inicio = info.event.start;
+        const fin = info.event.end ?? inicio;
+        const ahora = new Date();
+
+        if (inicio < ahora || fin < inicio) {
+          Swal.fire('Movimiento inválido', 'No se puede mover el registro a una fecha anterior a la actual.', 'error');
+          info.revert();
+          return;
+        }
+
+        await supabase
+          .from('eventos')
+          .update({
+            fecha_hora_inicio: inicio.toISOString(),
+            fecha_hora_final: fin.toISOString()
+          })
+          .eq('id', info.event.id);
+
+        Swal.fire('Movido', 'El registro fue reprogramado.', 'success');
+        calendar.refetchEvents();
+      },
+
+      events: async function(info, successCallback, failureCallback) {
+        const { data, error } = await supabase
+          .from('eventos')
+          .select('*')
+          .eq('user_id', currentUser.id);
+
+        if (error) {
+          console.error('Error al cargar registros:', error.message);
+          failureCallback(error);
+          return;
+        }
+
+        const eventos = data.map(evt => {
+          const fechaFin = new Date(evt.fecha_hora_final);
+          const terminaEnMedianoche =
+            fechaFin.getUTCHours() === 0 &&
+            fechaFin.getUTCMinutes() === 0 &&
+            fechaFin.getUTCSeconds() === 0;
+
+          const end = terminaEnMedianoche
+            ? new Date(fechaFin.getTime() + 86400000).toISOString()
+            : fechaFin.toISOString();
+
+          return {
+            id: evt.id,
+            title: evt.nombre,
+            start: new Date(evt.fecha_hora_inicio).toISOString(),
+            end,
+            backgroundColor: evt.color || '#6a1b9a',
+            extendedProps: {
+              descripcion: evt.descripcion
+            }
+          };
+        });
+
+        successCallback(eventos);
+      },
+
+      eventDidMount(info) {
+        const closeBtn = document.createElement('div');
+        closeBtn.textContent = '×';
+        closeBtn.className = 'fc-event-close';
+
+        closeBtn.onclick = (e) => {
+          e.stopPropagation();
+          eliminarEvento(info.event.id, info.event.title);
+        };
+
+        info.el.appendChild(closeBtn);
+      }
+    });
+
+    calendar.render();
+  }
+
+ (async () => {
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data?.user) {
+    console.error('Error al obtener el usuario:', error?.message);
+    return;
+  }
+
+  currentUser = data.user;
+
+  const saludo = document.getElementById('saludo');
+  if (saludo) {
+    saludo.textContent = `¡Hola ${currentUser.email}!`;
+  }
+
+  mostrarCalendario();
+})();
+
+
+</script>
+
+</body>
+</html>

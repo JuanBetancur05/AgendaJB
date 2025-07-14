@@ -15,11 +15,13 @@
         <link rel="stylesheet" href="../assets/css/estilos.css" media="screen">
        
         <script class="u-script" type="text/javascript" src="../assets/js/jquery.js" defer=""></script>
+            <script class="u-script" type="text/javascript" src="../assets/js/global.js" defer=""></script>
         <script class="u-script" type="text/javascript" src="../assets/js/estilos.js" defer=""></script>
         <title>Ingreso</title>
     </head>
     <body>
-          <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
+     <body data-home-page-title="Inicio" data-path-to-root="./" data-include-products="false" class="u-body u-overlap u-overlap-contrast u-overlap-transparent u-xl-mode" data-lang="es"><header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
           <div class="menu-collapse">
             <a class="u-button-style u-hamburger-link u-nav-link" href="#" tabindex="-1" aria-label="Open menu" aria-controls="0dd2">
               <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
@@ -27,25 +29,30 @@
 </g></svg>
             </a>
           </div>
-          <div class="u-nav-container">
+          <div class="u-custom-menu u-nav-container">
             <ul role="menubar" class="u-nav u-unstyled u-nav-1"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html" style="padding: 10px 20px;">Inicio</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./Tareas.html" style="padding: 10px 20px;">Tareas</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./login.html" style="padding: 10px 20px;">Ingresar</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../views/Tareas.html" style="padding: 10px 20px;">Tareas</a>
+    </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../views/bienvenido.html" style="padding: 10px 20px;">Calendario</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../views/login.html" style="padding: 10px 20px;">Ingresar</a>
 </li></ul>
           </div>
-          <div class="u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
+          <div class="u-custom-menu u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html">Inicio</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Tareas.html">Tareas</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Ingresar.html">Ingresar</a>
+                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html">Inicio</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../views/Tareas.html">Tareas</a>
+    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../views/bienvenido.html">Calendario</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../views/login.html">Ingresar</a>
 </li></ul>
               </div>
             </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          
           </div>
-        </nav> 
+        </nav><span id="btn-logout" class="u-file-icon u-icon u-icon-rectangle u-icon-1" style="cursor:pointer;">
+  <img src="../assets/img/cerrar-sesion.png" alt="Cerrar sesión" />
+</span>
+    
       </div>
         <div class="login">
             <div class="login__content">

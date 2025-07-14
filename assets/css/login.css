@@ -4,10 +4,10 @@
 /*===== VARIABLES CSS =====*/
 :root{
   /*===== Colores =====*/
-  --first-color: #9D4BFF;
-  --first-color-dark: #23004D;
-  --first-color-light: #A49EAC;
-  --first-color-lighten: #F2F2F2;
+  --first-color: #9D4BFF !important;
+  --first-color-dark: #23004D !important;
+  --first-color-light: #A49EAC !important;
+  --first-color-lighten: #F2F2F2 !important;
 
   /*===== Font and typography =====*/
   --body-font: 'Open Sans', sans-serif;
@@ -33,8 +33,9 @@ body{
   padding: 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
-  color: var(--first-color-dark);
+  color: #000000 !important;
 }
+
 
 h1{
   margin: 0;
@@ -81,11 +82,11 @@ img{
   position: absolute;
   bottom: 1rem;
   width: 100%;
-  background-color: var(--first-color-lighten);
+  background-color: var(--first-color-lighten) !important;
   padding: 2rem 1rem;
   border-radius: 1rem;
   text-align: center;
-  box-shadow: 0 8px 20px rgba(35,0,77,.2);
+  box-shadow: 0 8px 20px rgba(35,0,77,.2) !important;
   animation-duration: .4s;
   animation-name: animate-login;
 }
@@ -112,14 +113,14 @@ img{
   grid-template-columns: max-content 1fr;
   column-gap: .5rem;
   padding: 1.125rem 1rem;
-  background-color: #FFF;
+  background-color: #FFF !important;
   margin-top: 1rem;
   border-radius: .5rem;
 }
 
 .login__icon{
   font-size: 1.5rem;
-  color: var(--first-color);
+  color: var(--first-color) !important;
 }
 
 .login__input{
@@ -127,7 +128,7 @@ img{
   outline: none;
   font-size: var(--normal-font-size);
   font-weight: 700;
-  color: var(--first-color-dark);
+  color: var(--first-color-dark) !important;
 }
 
 .login__input::placeholder{
@@ -143,15 +144,15 @@ img{
   margin-top: .5rem;
   font-size: var(--small-font-size);
   font-weight: 600;
-  color: var(--first-color-light);
+  color: var(--first-color-light) !important;
 }
 
 .login__button{
   display: block;
   padding: 1rem;
   margin: 2rem 0;
-  background-color: var(--first-color);
-  color: #FFF;
+  background-color: var(--first-color) !important;
+  color: #FFF !important;
   font-weight: 600;
   text-align: center;
   border-radius: .5rem;
@@ -159,7 +160,7 @@ img{
 }
 
 .login__button:hover{
-  background-color: var(--first-color-dark);
+  background-color: var(--first-color-dark) !important;
 }
 
 .login__account, .login__signin, .login__signup{
@@ -168,7 +169,7 @@ img{
 }
 
 .login__account{
-  color: var(--first-color-dark);
+  color: var(--first-color-dark) !important;
 }
 
 .login__signin, .login__signup{
@@ -253,4 +254,21 @@ img{
   text-align: center !important;
   max-width: fit-content !important;
   min-height: 80px !important; /* Ajustá según lo que necesites */
+}
+
+
+.u-file-icon img {
+    margin-top: -23px !important;
+    object-fit: contain;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.u-nav-item a.u-nav-link, .menu-collapse a.u-nav-link {
+    color: #000000 !important;
+}
+
+h1{
+  color: #000000 !important;
 }

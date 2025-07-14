@@ -7,10 +7,12 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="./assets/css/estilos.css" media="screen">
 <link rel="stylesheet" href="./assets/css/index.css" media="screen">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+        <script src="../assets/db/database.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script class="u-script" type="text/javascript" src="./assets/js/jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="./assets/js/estilos.js" defer=""></script>
-
-
+     <script class="u-script" type="text/javascript" src="./assets/js/global.js" defer=""></script>
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <script type="application/ld+json">{
 		"@context": "http://schema.org",
@@ -23,7 +25,7 @@
     <meta property="og:type" content="website">
     <link rel="canonical" href="/">
   <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-home-page="https://website6531425.estilos.io/Inicio.html?version=80bc14ec-7b79-c6d9-fc97-1a81bf073aca" data-home-page-title="Inicio" data-path-to-root="./" data-include-products="false" class="u-body u-overlap u-overlap-contrast u-overlap-transparent u-xl-mode" data-lang="es"><header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+  <body data-home-page-title="Inicio" data-path-to-root="./" data-include-products="false" class="u-body u-overlap u-overlap-contrast u-overlap-transparent u-xl-mode" data-lang="es"><header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-sheet-1">
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
           <div class="menu-collapse">
             <a class="u-button-style u-hamburger-link u-nav-link" href="#" tabindex="-1" aria-label="Open menu" aria-controls="0dd2">
@@ -32,25 +34,30 @@
 </g></svg>
             </a>
           </div>
-          <div class="u-nav-container">
-            <ul role="menubar" class="u-nav u-unstyled u-nav-1"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./" style="padding: 10px 20px;">Inicio</a>
+          <div class="u-custom-menu u-nav-container">
+            <ul role="menubar" class="u-nav u-unstyled u-nav-1"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./index.html" style="padding: 10px 20px;">Inicio</a>
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./views/Tareas.html" style="padding: 10px 20px;">Tareas</a>
+  </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./views/bienvenido.html" style="padding: 10px 20px;">Calendario</a>
 </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./views/login.html" style="padding: 10px 20px;">Ingresar</a>
 </li></ul>
           </div>
-          <div class="u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
+          <div class="u-custom-menu u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./">Inicio</a>
+                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./index.html">Inicio</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./views/Tareas.html">Tareas</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./views/Ingresar.html">Ingresar</a>
+  </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./views/bienvenido.html">Calendario</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./views/login.html">Ingresar</a>
 </li></ul>
               </div>
             </div>
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
-        </nav>
+        </nav><span id="btn-logout" class="u-file-icon u-icon u-icon-rectangle u-icon-1" style="cursor:pointer;">
+  <img src="./assets/img/cerrar-sesion-8d5a0fa7.png" alt="Cerrar sesión" />
+</span>
+
       </div></header>
     <section class="skrollable u-clearfix u-image u-shading u-section-1" id="sec-cc41">
       <div class="u-clearfix u-sheet u-valign-bottom-md u-valign-middle-lg u-valign-middle-xl u-sheet-1">
@@ -63,7 +70,7 @@
                   </p>
                   <h1 class="u-align-left u-custom-font u-text u-text-default-lg u-text-default-xl u-text-font u-text-2"> Calendario para gestionar tus tareas</h1>
                   <p class="u-align-left u-text u-text-3"> Ideal para gestionar actividades personales, académicas o laborales con total control visual.</p>
-                  <a href="" class="u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-radius u-btn-1">Empezar</a>
+                  <a href="./views/bienvenido.html" class="u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-radius u-btn-1">Empezar</a>
                 </div>
               </div>
               <div class="u-container-style u-layout-cell u-size-1-md u-size-1-sm u-size-1-xs u-size-17-lg u-size-17-xl u-layout-cell-2">
@@ -73,14 +80,25 @@
               </div>
               <div class="u-container-style u-layout-cell u-size-17-lg u-size-17-xl u-size-21-md u-size-21-sm u-size-21-xs u-layout-cell-3">
                 <div class="u-container-layout u-container-layout-3">
-                  <h6 class="u-align-left u-custom-font u-text u-text-font u-text-white u-text-4"><span class="u-file-icon u-icon u-text-palette-4-base u-icon-2"><img src="./assets/img/1243bd58.png" alt=""></span>&nbsp;Prueba@gmail.com 
+                  <h6 id="usuario-info" class="u-align-left u-custom-font u-text u-text-font u-text-white u-text-4">
+                  <span class="u-file-icon u-icon u-text-palette-4-base u-icon-2">
+                    <img src="./assets/img/1243bd58.png" alt="">
+                  </span>
+                  &nbsp;Hola
+                </h6>
+
                   </h6>
                   <div class="u-container-align-center u-container-style u-expanded-width-lg u-expanded-width-xl u-expanded-width-xs u-gradient u-group u-hidden-md u-image u-radius u-shape-round u-image-2">
                     <div class="u-container-layout u-container-layout-4">
-                      <h3 class="u-align-center u-custom-font u-text u-text-font u-text-white u-text-5" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">800+</h3>
-                      <h6 class="u-align-center u-custom-font u-text u-text-body-alt-color u-text-font u-text-6">Tareas realizadas</h6>
-                      <h3 class="u-align-center u-custom-font u-text u-text-font u-text-white u-text-7" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">70+</h3>
-                      <h6 class="u-align-center u-custom-font u-text u-text-font u-text-white u-text-8">Total de usuarios activos</h6>
+                     <!-- Contador -->
+<h3 id="contador-eventos" class="u-align-center u-custom-font u-text-white u-text-5">0</h3>
+<h6 class="u-align-center u-text-body-alt-color u-text-6">Tareas realizadas</h6>
+<h3 id="ultimo-evento" class="u-align-center u-text-white">Cargando...</h3>
+<h6 class="u-align-center u-text-white">Último evento registrado</h6>
+
+
+
+
                     </div>
                   </div>
                 </div>
@@ -91,7 +109,7 @@
       </div>
     </section>
     <section class="u-clearfix u-container-align-left u-palette-2-light-3 u-section-2" id="block-2">
-      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xl u-valign-middle-xs u-sheet-1">
+      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-xl u-sheet-1">
         <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
             <div class="u-layout-row">
@@ -104,7 +122,7 @@
                 </div>
               </div>
               <div class="u-container-style u-layout-cell u-size-30-lg u-size-30-xl u-size-35-md u-size-35-sm u-size-35-xs u-layout-cell-2">
-                <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-xl u-container-layout-2">
+                <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-valign-top-xl u-container-layout-2">
                   <div class="custom-expanded u-expanded-width-lg u-expanded-width-xl u-list u-list-1">
                     <div class="u-repeater u-repeater-1">
                       <div class="u-container-align-center-sm u-container-align-center-xs u-container-style u-list-item u-radius u-repeater-item u-shape-round u-white u-list-item-1">
@@ -179,21 +197,20 @@
       </div>
     </section>
     <section class="u-clearfix u-palette-2-light-3 u-section-4" id="block-3">
-      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-sheet-1">
         <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
             <div class="u-layout-row">
               <div class="u-container-align-center-sm u-container-align-center-xs u-container-style u-layout-cell u-size-30 u-layout-cell-1">
-                <div class="u-container-layout u-valign-middle-lg u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+                <div class="u-container-layout u-valign-bottom-xs u-valign-middle-lg u-valign-middle-sm u-container-layout-1">
                   <h2 class="u-custom-font u-text u-text-font u-text-1"> Interfaz Intuitiva y Dinámica</h2>
                   <p class="u-text u-text-2"> Interactua con tu agenda arrastrando, agregando, reprogramando y eliminando tareas fácilmente,todo con simples clics, sin complicaciones.</p>
-                  <a href="" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-radius u-btn-1">Nuestro contacto<br style="">
-                  </a>
+                  <a href="Tareas.html#sec-5ac5" data-page-id="262584802" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-2 u-radius u-btn-1">Probar</a>
                 </div>
               </div>
               <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
                 <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-valign-top-lg u-container-layout-2">
-                  <img class="custom-expanded u-image u-image-1" src="./assets/img/Capturadepantalla2025-07-11112416-portrait.png" data-image-width="1485" data-image-height="1920" data-animation-name="customAnimationIn" data-animation-duration="2000" data-animation-delay="0">
+                  <img class="custom-expanded u-image u-image-1" src="./assets/img/Capturadepantalla2025-07-11112416-portrait.png" data-image-width="1485" data-image-height="1920">
                 </div>
               </div>
             </div>
@@ -202,12 +219,9 @@
       </div>
     </section>
     
-    
-    
     <footer class="u-align-center u-clearfix u-container-align-center u-footer u-footer" id="footer"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1"> © 2025.&nbsp;<a href="https://juanbetancur.netlify.app/" class="u-active-none u-border-none u-btn u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1">Dev JB</a>
         </p>
       </div></footer>
-   
-  
+ 
 </body></html>

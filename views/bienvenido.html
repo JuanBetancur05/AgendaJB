@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../assets/css/home.css" />
+
        <link rel="stylesheet" href="../assets/css/estilos.css" media="screen">
        
         <script class="u-script" type="text/javascript" src="../assets/js/jquery.js" defer=""></script>
@@ -28,16 +29,7 @@
 
   <!-- Estilos internos -->
   <style>
-    .u-menu {
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
-  text-align: center !important;
-  max-width: fit-content !important;
-  min-height: 80px !important; /* Ajustá según lo que necesites */
-}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -178,8 +170,8 @@ h3 {
 
   </style>
 </head>
-<body>
-     <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
+    <body data-home-page-title="Inicio" data-path-to-root="./" data-include-products="false" class="u-body u-overlap u-overlap-contrast u-overlap-transparent u-xl-mode" data-lang="es"><header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-sheet-1">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
           <div class="menu-collapse">
             <a class="u-button-style u-hamburger-link u-nav-link" href="#" tabindex="-1" aria-label="Open menu" aria-controls="0dd2">
               <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
@@ -187,26 +179,29 @@ h3 {
 </g></svg>
             </a>
           </div>
-          <div class="u-nav-container">
+          <div class="u-custom-menu u-nav-container">
             <ul role="menubar" class="u-nav u-unstyled u-nav-1"><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../index.html" style="padding: 10px 20px;">Inicio</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./Tareas.html" style="padding: 10px 20px;">Tareas</a>
-</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="./login.html" style="padding: 10px 20px;">Ingresar</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../views/Tareas.html" style="padding: 10px 20px;">Tareas</a>
+    </li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../views/bienvenido.html" style="padding: 10px 20px;">Calendario</a>
+</li><li role="none" class="u-nav-item"><a role="menuitem" class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="../views/login.html" style="padding: 10px 20px;">Ingresar</a>
 </li></ul>
           </div>
-          <div class="u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
+          <div class="u-custom-menu u-nav-container-collapse" id="0dd2" role="region" aria-label="Menu panel">
             <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
               <div class="u-inner-container-layout u-sidenav-overflow">
                 <div class="u-menu-close" tabindex="-1" aria-label="Close menu"></div>
-                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html">Inicio</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Tareas.html">Tareas</a>
-</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="./Ingresar.html">Ingresar</a>
+                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../index.html">Inicio</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../views/Tareas.html">Tareas</a>
+    </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../views/bienvenido.html">Calendario</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="../views/login.html">Ingresar</a>
 </li></ul>
               </div>
             </div>
-            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          
           </div>
-        </nav> 
-
+        </nav><span id="btn-logout" class="u-file-icon u-icon u-icon-rectangle u-icon-1" style="cursor:pointer;">
+  <img src="../assets/img/cerrar-sesion.png" alt="Cerrar sesión" />
+</span>
   <div class="d-flex">
     <div class="main-content flex-grow-1">
       <div class="container mt-5">
@@ -265,6 +260,50 @@ h3 {
 
 
 <script>
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const logoutBtn = document.getElementById('btn-logout');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        Swal.fire({
+          title: '¿Cerrar sesión?',
+          text: 'Tu sesión actual se cerrará.',
+          icon: 'question',
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          confirmButtonText: 'Sí, cerrar sesión',
+          cancelButtonText: 'Cancelar',
+          customClass: {
+            popup: 'swal-personalizado',
+            title: 'swal-titulo',
+            htmlContainer: 'swal-texto'
+          }
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            const { error } = await supabase.auth.signOut();
+            if (error) {
+              Swal.fire('Error', 'No se pudo cerrar la sesión.', 'error');
+            } else {
+              localStorage.removeItem('user_email');
+              Swal.fire({
+                icon: 'success',
+                title: 'Sesión cerrada',
+                text: 'Tu sesión fue cerrada correctamente.',
+                timer: 1500,
+                showConfirmButton: false
+              }).then(() => {
+                window.location.href = '../index.html';
+              });
+            }
+          }
+        });
+      });
+    }
+  });
+
   let currentUser = null;
   let calendar;
   let eventoSeleccionado = null;

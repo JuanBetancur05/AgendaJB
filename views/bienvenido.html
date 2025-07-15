@@ -169,6 +169,7 @@ h3 {
 }
 
   </style>
+  
 </head>
     <body data-home-page-title="Inicio" data-path-to-root="./" data-include-products="false" class="u-body u-overlap u-overlap-contrast u-overlap-transparent u-xl-mode" data-lang="es"><header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-sheet-1">
         <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1" role="navigation" aria-label="Menu navigation">
@@ -210,53 +211,60 @@ h3 {
     </div>
   </div>
 <!-- Modal para eventos -->
-<div id="modal-evento" class="modal fade show" tabindex="-1" role="dialog" style="display:none; background-color: rgba(0,0,0,0.6); z-index: 9999;">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal-titulo">Nuevo registro</h5>
-        <button type="button" class="close" onclick="cerrarModal()" aria-label="Cerrar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+<div id="modal-evento" tabindex="-1" role="dialog" style="
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+">
+  <div style="
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    width: 90%;
+    max-width: 420px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  ">
+    <h2 id="modal-titulo" style="margin-bottom: 16px; font-size: 20px; font-weight: bold; color: #333;">Nuevo Evento</h2>
 
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="modal-nombre">Título</label>
-          <input type="text" id="modal-nombre" class="form-control" placeholder="Título del evento" />
-        </div>
+    <div style="margin-bottom: 12px;">
+      <label for="modal-nombre" style="display: block; font-weight: bold; margin-bottom: 4px;color: #333;">Título</label>
+      <input type="text" id="modal-nombre" class="form-control" placeholder="Título del evento" />
+    </div>
 
-        <div class="form-group">
-          <label for="modal-descripcion">Descripción</label>
-          <textarea id="modal-descripcion" class="form-control" placeholder="Descripción del evento"></textarea>
-        </div>
+    <div style="margin-bottom: 12px;">
+      <label for="modal-descripcion" style="display: block; font-weight: bold; margin-bottom: 4px; color: #333;">Descripción</label>
+      <textarea id="modal-descripcion" class="form-control" rows="3" placeholder="Descripción del evento"></textarea>
+    </div>
 
-        <div class="form-group">
-          <label for="modal-color">Color</label>
-          <input type="color" id="modal-color" class="form-control" />
-        </div>
+    <div style="margin-bottom: 12px;">
+      <label for="modal-color" style="display: block; font-weight: bold; margin-bottom: 4px; color: #333;">Color</label>
+      <input type="color" id="modal-color" class="form-control" />
+    </div>
 
-        <div class="form-group">
-          <label for="modal-inicio">Fecha y hora inicio</label>
-          <input type="datetime-local" id="modal-inicio" class="form-control" />
-        </div>
+    <div style="margin-bottom: 12px;">
+      <label for="modal-inicio" style="display: block; font-weight: bold; margin-bottom: 4px; color: #333;">Fecha y hora inicio</label>
+      <input type="datetime-local" id="modal-inicio" class="form-control" />
+    </div>
 
-        <div class="form-group">
-          <label for="modal-fin">Fecha y hora fin</label>
-          <input type="datetime-local" id="modal-fin" class="form-control" />
-        </div>
-      </div>
+    <div style="margin-bottom: 12px;">
+      <label for="modal-fin" style="display: block; font-weight: bold; margin-bottom: 4px; color: #333;">Fecha y hora fin</label>
+      <input type="datetime-local" id="modal-fin" class="form-control" />
+    </div>
 
-      <div class="modal-footer">
-        <button onclick="cerrarModal()" class="btn btn-secondary">Cancelar</button>
-          <button id="btn-eliminar" class="btn btn-danger">Eliminar</button>
-
-        <button onclick="guardarEvento()" class="btn btn-primary">Guardar</button>
-      </div>
+    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <button onclick="cerrarModal()" class="btn btn-secondary">Cancelar</button>
+      <button id="btn-eliminar" class="btn btn-danger" style="display: none;">Eliminar</button>
+      <button onclick="guardarEvento()" class="btn btn-primary">Guardar</button>
     </div>
   </div>
 </div>
+
 
 
 <script>

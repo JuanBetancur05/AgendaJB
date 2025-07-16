@@ -47,7 +47,7 @@ h3 {
   margin-bottom: 20px;
 }
 
-/* Botones del calendario */
+
 .fc .fc-button-group .fc-button.fc-state-active {
   color: #000;
 }
@@ -68,12 +68,11 @@ h3 {
   color: #fff;
 }
 
-/* Día actual */
+
 .fc-unthemed td.fc-today {
   background: #000000;
 }
 
-/* Estilos de eventos */
 .fc-event {
   font-size: 12px;
   padding: 2px 4px;
@@ -84,7 +83,7 @@ h3 {
   position: relative;
 }
 
-/* Estilo mejorado de eventos en el grid */
+
 .fc-daygrid-event {
   display: block;
   white-space: normal;
@@ -94,13 +93,13 @@ h3 {
   border-radius: 4px;
 }
 
-/* Asegura visibilidad de todos los eventos */
+
 .fc-daygrid-day-frame {
   height: auto !important;
   overflow: visible !important;
 }
 
-/* Botón ❌ centrado en el evento */
+
 .fc-event-close {
   position: absolute;
   top: 50%;
@@ -118,17 +117,16 @@ h3 {
   visibility: hidden;
 }
 
-/* Mostrar ❌ al hacer hover */
 .fc-event:hover .fc-event-close {
   visibility: visible;
 }
 
-/* Drag visual */
+
 .fc-event.fc-event-draggable {
   position: relative;
 }
 
-/* Calendario responsive */
+
 #calendar {
   width: 100%;
   max-width: 100%;
@@ -269,8 +267,6 @@ h3 {
 
 <script>
 
-
-
   document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('btn-logout');
     if (logoutBtn) {
@@ -331,7 +327,7 @@ h3 {
       ? new Date(evento.end).toISOString().slice(0, 16)
       : new Date(fin).toISOString().slice(0, 16);
 
-    // Mostrar botón eliminar sólo al editar
+
     document.getElementById('btn-eliminar').style.display = evento ? 'inline-block' : 'none';
 
     eventoSeleccionado = evento;
@@ -520,20 +516,39 @@ h3 {
 
  (async () => {
   const { data, error } = await supabase.auth.getUser();
+  const saludo = document.getElementById('saludo');
+
   if (error || !data?.user) {
     console.error('Error al obtener el usuario:', error?.message);
-    return;
+
+  
+    Swal.fire({
+      title: 'Acceso restringido',
+      text: 'No estás autenticado. Inicia sesión para continuar.',
+      icon: 'warning',
+      confirmButtonText: 'Entendido',
+      customClass: {
+        popup: 'swal-personalizado',
+        title: 'swal-titulo',
+        htmlContainer: 'swal-texto'
+      }
+    }).then(() => {
+      window.location.href = '../index.html'; 
+    });
+
+    return; 
   }
+
 
   currentUser = data.user;
 
-  const saludo = document.getElementById('saludo');
   if (saludo) {
     saludo.textContent = `¡Hola ${currentUser.email}!`;
   }
 
   mostrarCalendario();
 })();
+
 
 
 </script>
